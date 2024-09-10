@@ -1,5 +1,7 @@
 import SidebarDropdown from './SidebarDropdown';
+
 export default function SidebarDropdownItem() {
+
   // Dynamic items
   const items = [
     {
@@ -11,10 +13,10 @@ export default function SidebarDropdownItem() {
     
     ,
       menuItems: [
-        {to: './UserDashboardTable', label: 'All listing' },
-        { href: '#', label: 'Add new listing' },
-        { href: '#', label: 'All listing category' },
-        { href: '#', label: 'Add listing categories' },
+        {to: '/user-dashboard', label: 'All listing' , id: 1},
+        {to: '/add-user', label: 'Add new listing' , id: 2},
+        { to: '#', label: 'All listing category' , id: 3},
+        { to: '#', label: 'Add listing categories' , id: 4},
       ],
     },
     {
@@ -33,9 +35,10 @@ export default function SidebarDropdownItem() {
     
     ,
       menuItems: [
-        { href: '#', label: 'All users' },
-        { href: '#', label: 'Add new user' },
+        { to: '/user-dashboard', label: 'All users' , id: 1},
+        { to: '/add-user', label: 'Add new user' , id: 2},
       ],
+    
     },
     {
       label: "Places",
@@ -45,8 +48,8 @@ export default function SidebarDropdownItem() {
     
     ,
       menuItems: [
-        { href: '#', label: 'All places' },
-        { href: '#', label: 'Add new place' },
+        { to: '#', label: 'All places' , id: 7},
+        { to: '#', label: 'Add new place' , id: 8},
       ],
     },
     {
@@ -57,8 +60,8 @@ export default function SidebarDropdownItem() {
     
     ,
       menuItems: [
-        { href: '#', label: 'All hotels' },
-        { href: '#', label: 'Add new hotel' },
+        {to: '#' , label: 'All hotels' , id: 9},
+        {to:"add-hotel" , label: 'Add new hotel' , id: 10},
       ],
     },
     {
@@ -78,8 +81,8 @@ export default function SidebarDropdownItem() {
     
     ,
       menuItems: [
-        { href: '#', label: 'All tour guides' },
-        { href: '#', label: 'Add new guide' },
+        { to: '#', label: 'All tour guides' , id: 11},
+        {to:"add-tour" , label: 'Add new guide' , id: 12},
       ],
     },
     {
@@ -91,10 +94,27 @@ export default function SidebarDropdownItem() {
     
     ,
       menuItems: [
-        { href: '#', label: 'All restaurants' },
-        { href: '#', label: 'Add new restaurant' },
+        { to: '#', label: 'All restaurants' , id: 13},
+        { to: '#', label: 'Add new restaurant' , id: 14},
       ],
     },
+    // {
+    //   label: "Add section",
+    //   icon:<svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    //   <g clipPath="url(#clip0_253_3153)">
+    //   <path d="M21.5252 13H14.8502V19H12.6252V13H5.9502V11H12.6252V5H14.8502V11H21.5252V13Z" fill="#323232"/>
+    //   </g>
+    //   <defs>
+    //   <clipPath id="clip0_253_3153">
+    //   <rect width="26.7" height="24" fill="white" transform="translate(0.387695)"/>
+    //   </clipPath>
+    //   </defs>
+    //   </svg>
+    //   ,
+    //   menuItems: [
+    //     { ,
+    //   ],
+    // }
   ];
 
   // Rendering dynamic dropdowns
