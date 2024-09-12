@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function UserDashboardTable() {
+export default function PlacesDashboard() {
     const [users, setUsers] = useState([
         {
             id: 1,
@@ -45,8 +45,8 @@ export default function UserDashboardTable() {
 
     return (
         <div className="overflow-x-auto bg-white p-10 ">
-            <h2 className="text-2xl font-bold pb-4">User data</h2>
-            <h3 className="text-xl font-thin pb-4">User Profile Management</h3>
+            <h2 className="text-2xl font-bold pb-4">Places data</h2>
+            <h3 className="text-xl font-thin pb-4">Places Management</h3>
             <table className="min-w-full text-sm text-left text-gray-500">
                 <thead className="text-xs text-gray-700 uppercase h-12 border-t-2 border-b-2 border-t-gray-200 border-b-gray-800">          <tr >
                     <th scope="col" className="px-6 py-3">User</th>

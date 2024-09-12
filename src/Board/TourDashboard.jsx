@@ -1,34 +1,32 @@
-
-
 import { useState } from "react";
 
-export default function UserDashboardTable() {
+export default function TourDashboard() {
     const [users, setUsers] = useState([
         {
             id: 1,
             avatar: "https://via.placeholder.com/150",
-            name: "John Doe",
-            email: "john@example.com",
+            guide: "John Doe",
+            Address: "Antara Ben Shadad St 15, Jeruslem",
             phone: "123-456-7890",
         },
         {
             id: 2,
             avatar: "https://via.placeholder.com/150",
-            name: "Jane Smith",
-            email: "jane@example.com",
+            guide: "Jane Smith",
+            Address: "Antara Ben Shadad St 15, Jeruslem",
             phone: "987-654-3210",
         }, {
             id: 3,
             avatar: "https://via.placeholder.com/150",
-            name: "John Doe",
-            email: "john@example.com",
+            guide: "John Doe",
+            Address: "Antara Ben Shadad St 15, Jeruslem",
             phone: "123-456-7890",
         },
         {
             id: 4,
             avatar: "https://via.placeholder.com/150",
-            name: "Jane Smith",
-            email: "jane@example.com",
+            guide: "Jane Smith",
+            Address: "Antara Ben Shadad St 15, Jeruslem",
             phone: "987-654-3210",
         },
         // Add more users here
@@ -45,18 +43,19 @@ export default function UserDashboardTable() {
 
     return (
         <div className="overflow-x-auto bg-white p-10 ">
-            <h2 className="text-2xl font-bold pb-4">User data</h2>
-            <h3 className="text-xl font-thin pb-4">User Profile Management</h3>
+            <h2 className="text-2xl font-bold pb-4">Tour Guide</h2>
+            <h3 className="text-xl font-thin pb-4">Hotels listing Management</h3>
             <table className="min-w-full text-sm text-left text-gray-500">
-                <thead className="text-xs text-gray-700 uppercase h-12 border-t-2 border-b-2 border-t-gray-200 border-b-gray-800">          <tr >
-                    <th scope="col" className="px-6 py-3">User</th>
-                    <th scope="col" className="px-6 py-3">Name</th>
-                    <th scope="col" className="px-6 py-3">Email</th>
-                    <th scope="col" className="px-6 py-3">Phone</th>
-                    <th scope="col" className="px-6 py-3 text-center">View</th>
-                    <th scope="col" className="px-6 py-3 text-center">Edit</th>
-                    <th scope="col" className="px-6 py-3 text-center">Delete</th>
-                </tr>
+                <thead className="text-xs text-gray-700 uppercase h-12 border-t-2 border-b-2 border-t-gray-200 border-b-gray-800"> 
+                    <tr >
+                        <th scope="col" className="px-6 py-3">User</th>
+                        <th scope="col" className="px-6 py-3">Tour Guide</th>
+                        <th scope="col" className="px-6 py-3">Address</th>
+                        <th scope="col" className="px-6 py-3">Phone</th>
+                        <th scope="col" className="px-6 py-3 text-center">View</th>
+                        <th scope="col" className="px-6 py-3 text-center">Edit</th>
+                        <th scope="col" className="px-6 py-3 text-center">Delete</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {users.map((user) => (
@@ -70,9 +69,9 @@ export default function UserDashboardTable() {
                             </td>
                             <>
                                 <td className="px-6 py-4 font-medium text-gray-900">
-                                    {user.name}
+                                    {user.guide}
                                 </td>
-                                <td className="px-6 py-4">{user.email}</td>
+                                <td className="px-6 py-4">{user.Address}</td>
                                 <td className="px-6 py-4">{user.phone}</td>
                             </>
                             {/* View Button */}
@@ -146,3 +145,5 @@ export default function UserDashboardTable() {
         </div>
     );
 };
+
+

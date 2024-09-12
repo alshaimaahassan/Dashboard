@@ -1,34 +1,32 @@
-
-
 import { useState } from "react";
-
-export default function UserDashboardTable() {
+import { Link } from "react-router-dom";
+export default function HotelDashboard() {
     const [users, setUsers] = useState([
         {
             id: 1,
             avatar: "https://via.placeholder.com/150",
-            name: "John Doe",
-            email: "john@example.com",
+            Hotel: "John Doe",
+            Address: "Antara Ben Shadad St 15, Jeruslem",
             phone: "123-456-7890",
         },
         {
             id: 2,
             avatar: "https://via.placeholder.com/150",
-            name: "Jane Smith",
-            email: "jane@example.com",
+            Hotel: "Jane Smith",
+            Address: "Antara Ben Shadad St 15, Jeruslem",
             phone: "987-654-3210",
         }, {
             id: 3,
             avatar: "https://via.placeholder.com/150",
-            name: "John Doe",
-            email: "john@example.com",
+            Hotel: "John Doe",
+            Address: "Antara Ben Shadad St 15, Jeruslem",
             phone: "123-456-7890",
         },
         {
             id: 4,
             avatar: "https://via.placeholder.com/150",
-            name: "Jane Smith",
-            email: "jane@example.com",
+            Hotel: "Jane Smith",
+            Address: "Antara Ben Shadad St 15, Jeruslem",
             phone: "987-654-3210",
         },
         // Add more users here
@@ -45,13 +43,13 @@ export default function UserDashboardTable() {
 
     return (
         <div className="overflow-x-auto bg-white p-10 ">
-            <h2 className="text-2xl font-bold pb-4">User data</h2>
-            <h3 className="text-xl font-thin pb-4">User Profile Management</h3>
+            <h2 className="text-2xl font-bold pb-4">All Hotels</h2>
+            <h3 className="text-xl font-thin pb-4">Hotels listing Management</h3>
             <table className="min-w-full text-sm text-left text-gray-500">
                 <thead className="text-xs text-gray-700 uppercase h-12 border-t-2 border-b-2 border-t-gray-200 border-b-gray-800">          <tr >
                     <th scope="col" className="px-6 py-3">User</th>
-                    <th scope="col" className="px-6 py-3">Name</th>
-                    <th scope="col" className="px-6 py-3">Email</th>
+                    <th scope="col" className="px-6 py-3">Hotel</th>
+                    <th scope="col" className="px-6 py-3">Address</th>
                     <th scope="col" className="px-6 py-3">Phone</th>
                     <th scope="col" className="px-6 py-3 text-center">View</th>
                     <th scope="col" className="px-6 py-3 text-center">Edit</th>
@@ -60,8 +58,8 @@ export default function UserDashboardTable() {
                 </thead>
                 <tbody>
                     {users.map((user) => (
-                        <tr key={user.id} className="bg-white border-b hover:bg-gray-50">
-                            <td className="px-6 py-4">
+                        <tr key={user.id} className="bg-white border-b hover:bg-gray-50 whitespace-nowrap">
+                            <td className="px-6 py-4 whitespace-nowrap">
                                 <img
                                     src={user.avatar}
                                     alt="Avatar"
@@ -69,14 +67,14 @@ export default function UserDashboardTable() {
                                 />
                             </td>
                             <>
-                                <td className="px-6 py-4 font-medium text-gray-900">
-                                    {user.name}
+                                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    {user.Hotel}
                                 </td>
-                                <td className="px-6 py-4">{user.email}</td>
-                                <td className="px-6 py-4">{user.phone}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{user.Address}</td>
+                                <td className="px-6 py-4 whitespace-nowrap" >{user.phone}</td>
                             </>
                             {/* View Button */}
-                            <td className="px-6 py-4 text-center">
+                            <td className="px-6 py-4 text-center whitespace-nowrap">
                                 <button className="text-blue-600 hover:text-blue-800">
                                     <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="0.969727" width="40" height="40" rx="4" fill="#4880FF" />
@@ -94,9 +92,9 @@ export default function UserDashboardTable() {
                             </td>
 
                             {/* Edit Button */}
-                            <td className="px-6 py-4 text-center">
-
-                                <button
+                            <td className="px-6 py-4 text-center whitespace-nowrap">
+<Link to="/edit-hotel">
+                                <button 
 
                                 >
                                     <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -115,13 +113,11 @@ export default function UserDashboardTable() {
                                             </clipPath>
                                         </defs>
                                     </svg>
-
                                 </button>
-
+</Link>
                             </td>
-
                             {/* Delete Button */}
-                            <td className="px-6 py-4 text-center">
+                            <td className="px-6 py-4 text-center whitespace-nowrap">
                                 <button
                                     onClick={() => handleDelete(user.id)}
                                 >

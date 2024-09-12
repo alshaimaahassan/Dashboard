@@ -48,8 +48,8 @@ export default function SidebarDropdownItem() {
     
     ,
       menuItems: [
-        { to: '#', label: 'All places' , id: 7},
-        { to: '#', label: 'Add new place' , id: 8},
+        { to: 'places-dashboard', label: 'All places' , id: 7},
+        { to: 'add-place', label: 'Add new place' , id: 8},
       ],
     },
     {
@@ -60,7 +60,7 @@ export default function SidebarDropdownItem() {
     
     ,
       menuItems: [
-        {to: '#' , label: 'All hotels' , id: 9},
+        {to: 'hotel-dashboard' , label: 'All hotels' , id: 9},
         {to:"add-hotel" , label: 'Add new hotel' , id: 10},
       ],
     },
@@ -81,7 +81,7 @@ export default function SidebarDropdownItem() {
     
     ,
       menuItems: [
-        { to: '#', label: 'All tour guides' , id: 11},
+        { to: 'tour-dashboard', label: 'All tour guides' , id: 11},
         {to:"add-tour" , label: 'Add new guide' , id: 12},
       ],
     },
@@ -98,23 +98,6 @@ export default function SidebarDropdownItem() {
         { to: '#', label: 'Add new restaurant' , id: 14},
       ],
     },
-    // {
-    //   label: "Add section",
-    //   icon:<svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    //   <g clipPath="url(#clip0_253_3153)">
-    //   <path d="M21.5252 13H14.8502V19H12.6252V13H5.9502V11H12.6252V5H14.8502V11H21.5252V13Z" fill="#323232"/>
-    //   </g>
-    //   <defs>
-    //   <clipPath id="clip0_253_3153">
-    //   <rect width="26.7" height="24" fill="white" transform="translate(0.387695)"/>
-    //   </clipPath>
-    //   </defs>
-    //   </svg>
-    //   ,
-    //   menuItems: [
-    //     { ,
-    //   ],
-    // }
   ];
 
   // Rendering dynamic dropdowns

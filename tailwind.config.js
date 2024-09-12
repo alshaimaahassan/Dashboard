@@ -8,7 +8,12 @@ export default {
     extend: {
       colors: {
       'primary': '#007FAB',
-    },},
+      "logo":" #4880FF",
+    },
+    fontFamily: {
+      sans: ['Nunito', 'sans-serif'],
+    } 
+    },
   },
   plugins: [
     {
