@@ -1,62 +1,64 @@
 
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function UserDashboardTable() {
-    const [users, setUsers] = useState([
-        {
-            id: 1,
-            avatar: "https://via.placeholder.com/150",
-            name: "John Doe",
-            email: "john@example.com",
-            phone: "123-456-7890",
-        },
-        {
-            id: 2,
-            avatar: "https://via.placeholder.com/150",
-            name: "Jane Smith",
-            email: "jane@example.com",
-            phone: "987-654-3210",
-        }, {
-            id: 3,
-            avatar: "https://via.placeholder.com/150",
-            name: "John Doe",
-            email: "john@example.com",
-            phone: "123-456-7890",
-        },
-        {
-            id: 4,
-            avatar: "https://via.placeholder.com/150",
-            name: "Jane Smith",
-            email: "jane@example.com",
-            phone: "987-654-3210",
-        },
-        // Add more users here
-    ]);
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
+    // Fetch users from API
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                // Replace the URL with your API endpoint
+                const response = await axios.get("https://jsonplaceholder.typicode.com/users");
+                // Map the response to match your data structure
+                const fetchedUsers = response.data.map(user => ({
+                    id: user.id,
+                    avatar: "https://via.placeholder.com/150", // You can update this to match your API data
+                    name: user.name,
+                    email: user.email,
+                    phone: user.phone,
+                }));
+                setUsers(fetchedUsers);
+            } catch (err) {
+                setError(`Failed to fetch users: ${err.message}`);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchUsers();
+    }, []);
 
     // Handle Delete User
-    const handleDelete = (id) => {
+    const handleDelete = ( user) => {
+        //axios 
         const updatedUsers = users.filter((user) => user.id !== id);
         setUsers(updatedUsers);
+        //  fetchUsers();
     };
 
-
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>{error}</div>;
 
     return (
         <div className="overflow-x-auto bg-white p-10 ">
             <h2 className="text-2xl font-bold pb-4">User data</h2>
             <h3 className="text-xl font-thin pb-4">User Profile Management</h3>
             <table className="min-w-full text-sm text-left text-gray-500">
-                <thead className="text-xs text-gray-700 uppercase h-12 border-t-2 border-b-2 border-t-gray-200 border-b-gray-800">          <tr >
-                    <th scope="col" className="px-6 py-3">User</th>
-                    <th scope="col" className="px-6 py-3">Name</th>
-                    <th scope="col" className="px-6 py-3">Email</th>
-                    <th scope="col" className="px-6 py-3">Phone</th>
-                    <th scope="col" className="px-6 py-3 text-center">View</th>
-                    <th scope="col" className="px-6 py-3 text-center">Edit</th>
-                    <th scope="col" className="px-6 py-3 text-center">Delete</th>
-                </tr>
+                <thead className="text-xs text-gray-700 uppercase h-12 border-t-2 border-b-2 border-t-gray-200 border-b-gray-800">
+                    <tr >
+                        <th scope="col" className="px-6 py-3">User</th>
+                        <th scope="col" className="px-6 py-3">Name</th>
+                        <th scope="col" className="px-6 py-3">Email</th>
+                        <th scope="col" className="px-6 py-3">Phone</th>
+                        <th scope="col" className="px-6 py-3 text-center">View</th>
+                        <th scope="col" className="px-6 py-3 text-center">Edit</th>
+                        <th scope="col" className="px-6 py-3 text-center">Delete</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {users.map((user) => (
@@ -95,10 +97,7 @@ export default function UserDashboardTable() {
 
                             {/* Edit Button */}
                             <td className="px-6 py-4 text-center">
-
-                                <button
-
-                                >
+                                <button>
                                     <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="0.969727" width="40" height="40" rx="4" fill="#4880FF" />
                                         <g clipPath="url(#clip0_627_442)">
@@ -115,28 +114,23 @@ export default function UserDashboardTable() {
                                             </clipPath>
                                         </defs>
                                     </svg>
-
                                 </button>
-
                             </td>
 
                             {/* Delete Button */}
                             <td className="px-6 py-4 text-center">
-                                <button
-                                    onClick={() => handleDelete(user.id)}
-                                >
+                                <button onClick={() => handleDelete(user.id, user)}>
                                     <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="0.969727" width="40" height="40" rx="4" fill="#FF372E" />
-                                        <g clipPath="url(#clip0_627_454)">
-                                            <path d="M14.9697 27C14.9697 28.1 15.8697 29 16.9697 29H24.9697C26.0697 29 26.9697 28.1 26.9697 27V15H14.9697V27ZM16.9697 17H24.9697V27H16.9697V17ZM24.4697 12L23.4697 11H18.4697L17.4697 12H13.9697V14H27.9697V12H24.4697Z" fill="white" />
+                                        <rect x="0.969727" width="40" height="40" rx="4" fill="#F85757" />
+                                        <g clipPath="url(#clip0_627_433)">
+                                            <path d="M26.4697 13H25.4697H24.9697H16.9697H15.9697H14.9697V15H15.9697V26C15.9697 27.1 16.8697 28 17.9697 28H23.9697C25.0697 28 25.9697 27.1 25.9697 26V15H26.9697V13H26.4697ZM23.9697 26H17.9697V15H23.9697V26ZM19.9697 17V24H21.9697V17H19.9697ZM22.9697 10H19.9697L19.4697 10.5H16.4697V12H23.4697V10.5H22.4697L22.9697 10Z" fill="white" />
                                         </g>
                                         <defs>
-                                            <clipPath id="clip0_627_454">
+                                            <clipPath id="clip0_627_433">
                                                 <rect width="24" height="24" fill="white" transform="translate(8.96973 8)" />
                                             </clipPath>
                                         </defs>
                                     </svg>
-
                                 </button>
                             </td>
                         </tr>
@@ -145,4 +139,4 @@ export default function UserDashboardTable() {
             </table>
         </div>
     );
-};
+}
